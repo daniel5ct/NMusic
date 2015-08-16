@@ -2,7 +2,7 @@ app.factory('NMusicService', ['$http', '$q', function($http, $q) {
 
     var getInfo = function(inputValue, whatString, page) {
 		var deferred = $q.defer();
-		$http.get("http://services.sapo.pt/Music/OnDemand/Provider/apiv3/find?text="+inputValue+"&what="+whatString+"&page="+page)
+		$http.get("http://services.sapo.pt/Music/OnDemand/Provider/apiv3/find?text="+inputValue+"&what="+whatString+"&page="+page+"&per_page="+5)
 			.success(function (response) {
 				deferred.resolve(response);
 			})
