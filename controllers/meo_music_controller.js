@@ -25,6 +25,7 @@ app.controller('MyControllerNMusic', ['$scope', 'NMusicService', function($scope
 		artists: true
 	  };
 	
+	/* Mostra as tabs de acordo com as checkbox carregadas pelo utilizador */
 	var loadTabs = function(){
 		$scope.tabsVisible = false;
 		whatString = "";
@@ -39,15 +40,17 @@ app.controller('MyControllerNMusic', ['$scope', 'NMusicService', function($scope
 		whatString = whatString.substring(0,whatString.length-1);
 	};
 
-  $scope.getView = function (x) {
-     var file =  x + '.html';
-     return file;
-  }
+	/* Carrega as views */
+	$scope.getView = function (x) {
+		var file =  x + '.html';
+		return file;
+	}
 
-  $scope.search = function(page) {
-	loadTabs();
-	var inputValue = $scope.search_text;
-	var promise = NMusicService.getInfo(inputValue,whatString,page);
+	/* Função de search */
+	$scope.search = function(page) {
+		loadTabs();
+		var inputValue = $scope.search_text;
+		var promise = NMusicService.getInfo(inputValue,whatString,page);
 	
 	promise.then(function (response){
 		$scope.tabsVisible = true;
@@ -93,7 +96,7 @@ app.controller('MyControllerNMusic', ['$scope', 'NMusicService', function($scope
 	})
   };
 
-  /* Capitalize the first letter of string in JavaScript */
+  /* 1ª letter */
   function capitalizeFirstLetter(string) {
   	return string.charAt(0).toUpperCase() + string.slice(1);
   }  
@@ -101,6 +104,7 @@ app.controller('MyControllerNMusic', ['$scope', 'NMusicService', function($scope
 
 
 
+/* Infinite Control directive */
 app.directive('infiniteScroll', function () {
     return {
         restrict: 'A',
