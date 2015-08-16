@@ -1,0 +1,22 @@
+<div infinite-scroll="#" style="overflow:auto; height:400px;">
+ <table class="table table-striped">
+    <thead>
+      <tr>
+		   <th id="head">Name</th>
+		   <th id="head">Creator Name</th>
+		   <th id="head">Total Tracks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in results_playlists | limitTo: myLimit" class="album_row">
+		  <td id="text">{{ x.name }}</td>
+		  <td id="text">{{ x.creator.name }}</td>
+		  <td id="text">{{ x.total_tracks }}</td>
+      </tr>
+	  
+	   <tr ng-if="results_playlists.length == 0">
+		  <td colspan="3" id="text">Playlists Not Found</td>
+      </tr>
+    </tbody>
+ </table>
+</div>

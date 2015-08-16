@@ -1,0 +1,16 @@
+.row{
+  margin-top: 30px;
+}
+
+#text{
+  vertical-align : middle;
+  text-align: center;
+}
+
+#head{
+  text-align: center;
+}
+
+.album_row{
+	height : 90px;
+}

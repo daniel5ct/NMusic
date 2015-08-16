@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<script data-require="angular.js@1.4.3" data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
+<script src= "../app.js"></script>
+<script src= "../controllers/meo_music_controller.js"></script>
+<script src= "../services/meo_music_service.js"></script>
+
+<body ng-app="myApp" ng-controller="MyControllerNMusic">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="search(1)">Search</button>
+          </span>
+          <input type="text" class="form-control" placeholder="Search for..." ng-model="search_text">
+        </div>
+      </div>
+	  
+      <div class="col-md-6">
+        <div class="btn-group" style="float:right;">
+          <label class="btn btn-primary active" ng-model="checkModel.artists" btn-checkbox>Artists</label>
+          <label class="btn btn-primary" ng-model="checkModel.albums" btn-checkbox>Albums</label>
+          <label class="btn btn-primary" ng-model="checkModel.tracks" btn-checkbox>Tracks</label>
+          <label class="btn btn-primary" ng-model="checkModel.playlists" btn-checkbox>Playlists</label>
+          <label class="btn btn-primary" ng-model="checkModel.channels" btn-checkbox>Channels</label>
+          <label class="btn btn-primary" ng-model="checkModel.genres" btn-checkbox>Genres</label>
+        </div>
+      </div>
+    </div>
+	<br><br>
+    <div ng-hide="!tabsVisible" class="row">
+      <div class="col-md-12">
+        <tabset justified="true">
+          <tab ng-repeat="tab in tabs" heading="{{tab}}">
+		   <div class="row">
+				<div class="col-md-12">
+					<div ng-include="getView(tab)"></div>
+			    </div>
+		   </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+<hr>
+
+</div>
+
+</body>
+</html>

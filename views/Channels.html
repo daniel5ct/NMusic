@@ -1,0 +1,26 @@
+<div infinite-scroll="#" style="overflow:auto; height:400px;">
+ <table class="table table-striped">
+    <thead>
+      <tr>
+		   <th id="head">Name</th>
+		   <th id="head">Followers</th>
+		   <th id="head">Total Albums</th>
+		   <th id="head">Total Tracks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in results_channels | limitTo: myLimit">
+		  <td ng-if="x.has_wide_image == true"><img ng-src="http://catalogv3.nmusic.sapo.pt/channels/{{x.id}}/300" alt="" border=3 height=100 width=100></img></td>
+		  <td ng-if="x.has_wide_image == false"><img ng-src="http://becultural.com.br/wp-content/themes/theme/assets/images/image-not-found.png" alt="" border=3 height=100 width=100></img></td>
+		  <td id="text">{{ x.name }}</td>
+		  <td id="text">{{ x.followers }}</td>
+		  <td id="text">{{ x.albums_count }}</td>
+		  <td id="text">{{ x.tracks_count }}</td>
+      </tr>
+	  <tr ng-if="results_channels.length == 0">
+		  <td colspan="4" id="text">Channels Not Found</td>
+      </tr>
+	  
+    </tbody>
+ </table>
+</div>
